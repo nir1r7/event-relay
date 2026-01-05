@@ -31,10 +31,20 @@ jobs:
                 python -m pip install --upgrade pip
                 pip install -r backend/requirements.txt
 
+            # Lint with Ruff
+            - name: Lint with Ruff
+              run: |
+                ruff check backend/app backend/tests
+
+            # Ruff formating check
+            - name: Ruff format check
+              run: |
+                ruff format --check backend/app backend/tests
+
             # Run tests
-            # - name: Run tests
-            #   run: |
-            #     pytest backend/tests/
+            - name: Run tests
+              run: |
+                pytest backend/tests/
 
             # Log in to Github Container Registry
             - name: Log in to GHCR

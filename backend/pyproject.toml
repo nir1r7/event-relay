@@ -1,0 +1,28 @@
+[tool.ruff]
+# Where Ruff should look
+src = ["app"]
+
+# Python version you target
+target-version = "py311"
+
+# Keep output readable in CI
+line-length = 100
+
+# Only enable high-signal rules
+lint.select = [
+    "F",  # Pyflakes (real bugs)
+    "E",  # Basic syntax errors
+    "W",  # Warnings
+    "I",  # Import sorting
+]
+
+# Ignore noisy / non-critical rules
+lint.ignore = [
+    "E501",  # Line length (we'll format later)
+]
+
+# Never lint generated or external code
+exclude = [
+    "alembic/versions",
+    "venv",
+]

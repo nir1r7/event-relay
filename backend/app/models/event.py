@@ -1,13 +1,16 @@
-from sqlalchemy import Column, Integer, String, JSON, DateTime, func
-from pydantic import BaseModel, Field
 from typing import Dict
+
 from app.db import Base
+from pydantic import BaseModel, Field
+from sqlalchemy import JSON, Column, DateTime, Integer, String, func
+
 
 # pyndantic model (api inp)
 class EventIn(BaseModel):
     source: str = Field(..., example="auth-service")
     type: str = Field(..., example="user.login")
     payload: Dict = Field(..., example={"user_id": 123})
+
 
 # sqlalchemy  (db schema)
 class Event(Base):

@@ -43,8 +43,18 @@ htmlcov/
 *.log
 logs/
 
+# Alembic
+alembic/__pycache__/
+alembic/versions/__pycache__/
+
+# Monitoring
+monitoring/grafana/data/
+monitoring/grafana/provisioning/
+*.rrd
+
 # Docker
 docker-compose.override.yml
+*.pid
 
 # OS
 Thumbs.db
