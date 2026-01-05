@@ -47,7 +47,7 @@ jobs:
               run: |
                 ruff check backend/app backend/tests
 
-            # Ruff formating check
+            # Ruff formatting check
             - name: Ruff format check
               run: |
                 ruff format --check backend/app backend/tests
@@ -67,7 +67,7 @@ jobs:
                 password: ${{ secrets.GITHUB_TOKEN }}
 
             # Semantic Docker image tagging (relesae-grade)
-            - name: Dcoker metadata
+            - name: Docker metadata
               id: meta
               uses: docker/metadata-action@v5
               with:
@@ -81,7 +81,7 @@ jobs:
             # Build and push docker image (for main only)
             - name: Build and push Docker image
               uses: docker/build-push-action@v5
-              if: github.ref == 'refs/heads/main' || startWith(github.ref, 'refs/tags/v')
+              if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v')
               with:
                 context: backend
                 file: backend/Dockerfile
